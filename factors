@@ -6,10 +6,18 @@ def factorize():
     with open(sys.argv[1], 'r') as data:
     	 for line in data:
 	     num = int(line.strip())
-	     for div in range(2, num // 2):
-	     	 if num % div == 0:
-		    p = num / div
-		    print("{}={}*{}".format(num, int(p), div))
-		    break
+	     if num % 2 == 0:
+                 p = num / 2
+                 print("{}={}*{}".format(num, int(p), 2))
+                 continue
+             div = 3
+             while div < num // 2:
+                 if num % div == 0:
+                     p = num / div
+                     print("{}={}*{}".format(num, int(p), div))
+                     break
+                 div += 2
+             if div >= (num // 2) + 1:
+                 print("{}={}*{}".format(num, num, 1))
 
 factorize()
